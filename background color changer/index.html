@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+ <html> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Background color changer</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+
+        <style type="text/css">
+        
+        body {
+            background: #ee82ee;;
+        }
+
+
+        div {
+            margin: 0 auto;
+            width: 50%;
+            text-align: center;
+            position: relative;
+            top: 350px;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid grey;
+            padding: 8px 12px;
+            color: grey;
+            border-radius: 5%;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: grey;
+            color: white;
+            transition: 0.6s;
+        }
+
+        #message {
+            color: white;
+            font-size: 20px;
+            padding-top: 20px;
+            margin-bottom: 300px;
+        }
+       
+        </style>
+
+
+
+       
+
+
+    </head>
+    <body>
+        <div>
+            <button id="button">Click Me!</button>
+        </div>
+        <div id="message"></div>
+
+
+
+        
+        <script type="text/javascript">
+        
+        let colors = ["red", "green", "yellow", "pink", "orange", "blue", "purple", "silver", "black"];
+
+        let sayings = [];
+
+        // create array of colors
+
+        let buttonChange = document.getElementById("button");
+        let x = document.body;
+        let message = document.getElementById("message");
+
+
+        
+        buttonChange.addEventListener("click", function(){
+           randomNumberColor();
+           randomNumberSaying();
+            x.style.backgroundColor = colors[randomNumberColor()];
+       
+
+            sayings = [`${x.style.backgroundColor} is definitely not my favorite color`, `I once painted my dog ${x.style.backgroundColor}.. my partner wasn't happy`, `What a coincidence, i'm wearing ${x.style.backgroundColor} underwear!`, `Have you ever seen a ${x.style.backgroundColor} alien? Me either.`, `The ${x.style.backgroundColor} power ranger is my favorite... i mean WAS!..... was my favorite.....`];   
+
+            message.textContent = sayings[randomNumberSaying()];
+
+           
+        
+        
+        });
+
+      function randomNumberColor(){
+          return Math.floor(Math.random() * colors.length);
+      };
+
+      function randomNumberSaying(){
+         return Math.floor(Math.random() * sayings.length);
+        
+      }
+
+
+       
+        
+        </script>
+
+
+
+
+    </body>
+</html>

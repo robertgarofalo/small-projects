@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+
+        <style type="text/css">
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #3B3B98;
+	color: #fff;
+	display: flex;
+	font-family: 'Muli', sans-serif;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	min-height: 100vh;
+}
+
+p {
+	margin: 5px 0;
+}
+
+h2 {
+	margin: 10px 0 20px;
+	text-align: center;
+}
+
+input[type=checkbox] {
+	margin-right: 0;
+}
+
+.container {
+	background-color: #23235B;
+	box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
+	padding: 20px;
+	width: 350px;
+	max-width: 100%;
+}
+
+.result-container {
+	background-color: rgba(0, 0, 0, 0.4);
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+	font-size: 18px;
+	letter-spacing: 1px;
+	padding: 12px 10px;
+	height: 50px;
+	width: 100%;
+}
+
+.result-container #result {
+  	word-wrap: break-word;
+	max-width: calc(100% - 40px);
+}
+
+.result-container .btn {
+	font-size: 20px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	height: 40px;
+	width: 40px;
+}
+
+.btn {
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	padding: 8px 12px;
+	background-color: #3B3B98;
+}
+
+.btn-large {
+	display: block;
+	width: 100%;
+}
+
+.setting {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 15px 0;
+}
+
+@media screen and (max-width: 400px) {
+	.result-container {
+		font-size: 14px;
+	}
+}
+
+	
+        </style>
+    </head>
+    <body>
+     
+        <!-- INSERT HTML HERE -->
+<div class="container">
+	<h2>Password Generator</h2>
+	<div class="result-container">
+		<span id="result"></span>
+		<button class="btn" id="clipboard">
+			<i class="far fa-clipboard"></i>
+		</button>
+	</div>
+	<div class="settings">
+		<div class="setting">
+			<label>Password length</label>
+			<input type="number" id="length" min='4' max='20' value='20' />
+		</div>
+		<div class="setting">
+			<label>Include uppercase letters</label> 
+			<input type="checkbox" id="uppercase" checked />
+		</div>
+		<div class="setting">
+			<label>Include lowercase letters</label> 
+			<input type="checkbox" id="lowercase" checked />
+		</div>
+		<div class="setting">
+			<label>Include numbers</label> 
+			<input type="checkbox" id="numbers" checked />
+		</div>
+		<div class="setting">
+			<label>Include symbols</label> 
+			<input type="checkbox" id="symbols" checked />
+		</div>
+	</div>
+	<button class="btn btn-large" id="generate">
+		Generate password
+	</button>
+</div>
+        
+        <script>
+
+            //DOM elements
+            const resultEl = document.getElementById('result');
+            const lengthEl = document.getElementById('length');
+            const uppercaseEl = document.getElementById('uppercase');
+            const lowercaseEl = document.getElementById('lowercase');
+            const numbersEl = document.getElementById('numbers');
+            const symbolsEl = document.getElementById('symbols');
+            const generateEl = document.getElementById('generate');
+            const clipboardEl = document.getElementById('clipboard');
+
+            const randomFunc = {
+                lower: getRandomLower,
+                upper: getRandomUpper,
+                number: getRandomNumber,
+                symbol: getRandomSymbol
+            };
+
+
+            //copy password to clipboard
+            //Notes ** must create a textarea and append to dom. 
+            // from there, select() the textarea and use execCommand('copy')
+            // don't forget to remove the selected area from the dom at the end using remove()
+            clipboardEl.addEventListener('click', () => {
+                const textarea = document.createElement('textarea');
+                const password = resultEl.innerText;
+
+                if (!password) {
+                    return;
+                }
+
+                textarea.value = password;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                textarea.remove();
+                alert('Password copied to clipboard');
+            })
+
+            //generate event listener
+            generateEl.addEventListener('click', () => {
+                const length = +lengthEl.value;
+                const hasUpper = uppercaseEl.checked;
+                const hasLower = lowercaseEl.checked;
+                const hasNumber = numbersEl.checked;
+                const hasSymbol = symbolsEl.checked;
+
+                resultEl.innerText = generatePassword(hasUpper, hasLower, hasNumber, hasSymbol, length);
+                
+            })
+
+            // generate password function
+            function generatePassword(upper, lower, number, symbol, length){
+                
+                let generatedPassword = '';
+
+                const typesCount = upper + lower + number + symbol;
+                //console.log('typesCount: ', typesCount);
+                
+                const typesArr = [{ upper }, { lower }, { number }, { symbol }].filter(item => Object.values(item)[0]);
+                
+               // console.log('types array: ', typesArr);
+            
+
+            if(typesCount === 0){
+                return '';
+            }
+
+            for (let i = 0; i < length; i += typesCount){
+            
+            typesArr.forEach(type => {
+                const funcName = Object.keys(type)[0];
+              //console.log('funcName: ', funcName);
+
+                generatedPassword += randomFunc[funcName]();
+                
+            })
+            }
+
+                const finalPassword = generatedPassword.slice(0, length);
+
+                return finalPassword;                
+             }   
+
+            // generator functions  - http://www.net-comber.com/charset.html
+
+            function getRandomLower() {
+            return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+            }
+
+            function getRandomUpper() {
+                return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+            }            
+
+            function getRandomNumber() {
+                return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+            }
+
+            function getRandomSymbol() {
+                const symbols = '!@#$%^&*(){}[]=<>/,.';
+                return symbols[Math.floor(Math.random() * symbols.length)];
+            }
+
+
+
+
+        </script>
+    </body>
+</html>

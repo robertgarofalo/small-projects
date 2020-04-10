@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+
+    <div id="container">
+        
+        <!-- HEADER-->
+        <div id="container-head">
+            <div class="pos-center">
+                <h1>Notes</h1>
+                <h3>Take note and never forget</h3>
+            </div>
+
+                <!-- SEARCH AND FILTER-->
+                <div id="sort-container">
+                    <div id="x" class="pos-center">
+                        <input id="search-bar" type="search" placeholder="Search Notes">
+                        
+                    </div>
+                </div>    
+        </div>
+
+        <!---- SAVED NOTE------->
+        
+        <div id="note-container">
+
+            <div id="note" class="note-block">
+
+              <p id="delete-note-btn" class="note-buttons delete">&#11197;</p>
+                
+                <h3 class="note-heading"></h3>
+
+                    <p class="note-description"></p>
+               
+                       <div class="edit-area"></div>
+            </div>
+
+
+
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="pos-center">
+            <button id="new-btn" class="button">Create New</button>
+        </div>
+
+        <!----- NEW NOTE - heading and text box ---->
+
+        <div id="new-note">
+            
+            <div class="pos-center">
+                <input id="new-heading" type="text" placeholder="Insert heading">
+                <p id="heading-error" class="errors"></p>
+                
+                <textarea id="note-input" placeholder="Insert description"></textarea>
+                <p id="description-error" class="errors"></p>
+            
+                <button id="save-button" class="button">Save</button>
+                <button id="cancel-button" class="button">Cancel</button>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <footer class="footer-style">Created by Robert Garofalo</footer> 
+    
+    <script src="script.js"></script>
+
+</body>
+    </html>

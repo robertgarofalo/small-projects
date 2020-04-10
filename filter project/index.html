@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html > 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Pacifico&display=swap" rel="stylesheet">
+        <style type="text/css">
+        /* font-family: 'Pacifico', cursive;
+            font-family: 'Great Vibes', cursive;
+            */
+
+        body {
+            background-color: #ffe2ff;
+            margin: 0 auto;
+            
+        }
+        
+        h1 {
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            font-size: 90px;
+            margin-bottom: -20px;
+        }
+
+        p {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            font-size: 32px;
+        }
+
+        p span {
+            text-decoration: underline;
+        }
+
+        #button-container {
+            display: flex;
+           justify-content: center;   
+           margin: 40px  0px;   
+           
+        }
+
+        button {
+            padding: 15px 40px;
+            margin: 0 30px; 
+            background: none;
+            border: 2px solid #ff94ee;
+            border-radius: 7px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 40px;
+            font-weight: bold;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #ff94ee;
+            
+            transition: 0.6s;
+        }
+
+        #container {
+
+            display: grid;
+            width: 100%;
+           grid-template-columns: 1fr 1fr 1fr;
+           grid-template-rows: auto-flow; /* used to remove the white space of undisplayed items with the filtering function */
+           grid-gap: 20px;  
+
+        }
+
+        .images {
+          width: auto;
+          height: 320px;
+                
+        }
+
+     
+    
+        #arancini-1 {
+            background: url("images/arancini-1.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #arancini-2 {
+            background: url("images/arancini-2.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #cannoli-2 {
+            background: url("images/cannoli-2.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #cannoli-1 {
+            background: url("images/cannoli-1.jfif");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #cassata-1 {
+            background: url("images/cassata-1.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #cassata-2 {
+            background: url("images/cassata-2.jfif");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #arancini-3 {
+            background: url("images/arancini-3.jpeg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #cannoli-3 {
+            background: url("images/cannoli-3.jfif");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #cassata-3 {
+            background: url("images/cassata-3.jfif");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+      
+        footer {
+            
+            padding: 40px 0;
+            text-align: center;
+            background-color: #ffe2ff;
+            font-size: 20px;
+        }
+
+        footer:hover {
+        background-color: #ff94ee;
+        transition: 0.6s;
+        }
+        
+        
+        </style>
+        
+    </head>
+
+    <body>
+        <h1>La Sicilia</h1>
+        <p>The World's <span>best</span> dessert</p>
+        <div id="button-container">
+            <button id="cannoli" class='btn' data-filter="all">All</button>
+            <button class='btn' data-filter="arancini">Arancini</button>
+            <button class='btn' data-filter="cannoli">Cannoli</button>
+            <button class='btn' data-filter="cassata">Cassata</button>
+        </div>
+
+        <div id="container">
+            <div id="arancini-1" class="images arancini background-position"></div>
+            <div id="cannoli-1" class="images cannoli background-position"></div>
+            <div id="cannoli-2" class="images cannoli background-position"></div>        
+            <div id="cassata-1" class="images cassata background-position"></div>
+            <div id="cassata-2" class="images cassata background-position"></div>
+            <div id="arancini-2" class="images arancini background-position"></div>
+            <div id="cassata-3" class="images cassata background-position"></div>
+            <div id="arancini-3" class="images arancini background-position"></div>
+            <div id="cannoli-3" class="images cannoli background-position"></div> 
+               
+        </div>
+
+        <footer>This filter was created by Robert Garofalo</footer>
+        
+        <script type="text/javascript">
+
+
+        (function(){
+
+            const buttons = document.querySelectorAll('.btn');
+            const images = document.querySelectorAll('.images');
+            const row = document.getElementById('container');
+
+            buttons.forEach((button) => {
+                button.addEventListener("click", (e) => {
+                    
+                    e.preventDefault()
+                    const filter = e.target.dataset.filter;
+                    console.log(filter);
+
+                    images.forEach((image) => {
+                        if(filter === "all"){
+                            image.style.display = "block";
+                        } else {
+                            if (image.classList.contains(filter)){
+                                image.style.display = "block";
+                                
+                            } else {
+                                image.style.display = "none";
+                            }
+                        }
+                    })
+
+                })
+            })
+
+        })();
+        
+        
+        </script>
+    </body>
+</html>

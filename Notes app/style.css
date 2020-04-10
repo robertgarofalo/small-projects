@@ -1,0 +1,166 @@
+body {
+    margin: -25px 0 0 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#container-head {
+    display: block;     
+    background-color:steelblue; 
+    color: white;    
+    margin: auto;           
+}
+
+.pos-center {
+    margin: auto;
+    width: 40%;
+}
+
+.pos-center h1 {
+    padding-top: 20px;
+    margin-bottom: -8px;
+    font-size: 34px;
+}
+
+#sort-container, .footer-style {
+    display: block;
+    background-color: #f3f3f3;
+    padding: 10px 0px;
+}
+/* ------------------------------------------------------------------------------------------- */
+
+/* Display saved note */
+#note {
+
+    display: none;
+}   
+
+.note-block {
+    width: 40%;
+    margin: auto;
+    border: 1px solid #e9e9e9;
+    background-color: #f7f7f7;
+    margin-top: 20px;
+}
+
+.note-heading {
+    margin-top: -10px;
+}
+
+.note-block > * {
+    padding-left: 20px;
+    
+}
+
+.last-edited {
+    margin-top: -10px;
+    font-style: italic;
+    font-size: 14px;
+    color: #a5a5a5;
+}     
+
+.note-block:hover {
+    background-color: #ececec;
+    transition: 0.5s;
+}
+
+.note-description #text {
+    margin-left: 20px;
+}
+
+.note-buttons {
+    display: inline;
+    
+}
+
+#delete-note-btn {
+    margin: 0px 10px 0px 90%;
+    
+    padding: 0;
+    font-size: 30px;
+    color: red;                
+}
+
+@media screen and (max-width: 650px){
+    #delete-note-btn {
+        margin: 0px 10px 0px 80%;
+    }
+}
+
+#delete-note-btn:hover {
+    color: rgb(224, 41, 41);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.button {
+    margin-top: 20px;
+    padding: 8px 10px;
+    outline: none;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid rgb(50, 106, 151);
+    border-radius: 3px;
+    
+}
+
+.button:hover {
+    background-color:rgb(17, 65, 104);
+    transition: 0.5s;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+
+/* Display: create new note */
+#new-note {
+    display: none;
+    margin: 20px 0px;
+}
+
+#new-note input {
+    width: 100%;
+    padding: 10px 0px;
+    margin-bottom: 20px;
+}
+
+#new-note textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 15px; 
+    margin-top: 10px;
+}
+
+#save-button {
+    background-color: green;
+    border: none;
+    margin-bottom: 100px;
+}
+
+#save-button:hover {
+    background-color: rgb(1, 92, 1);
+}
+
+#cancel-button {
+    background-color: rgb(236, 41, 41);
+    border: none;
+}
+
+#cancel-button:hover {
+    background-color:rgb(175, 31, 31)
+}
+
+.errors {
+    font-size: 12px;
+    color: red;
+    margin-top: -15px;
+    
+}
+
+
+footer {
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

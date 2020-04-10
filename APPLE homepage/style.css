@@ -1,0 +1,344 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -15px;
+}
+
+a {
+   cursor: pointer;
+}
+
+header {
+   height: 15px;
+   font-size: 14.2px;
+   margin-top: -15px;
+   
+   position: fixed;
+   text-align: center;
+   width: 100%;
+   
+}
+
+   .position-icon {
+   position: relative;
+   top: 3px;
+}
+
+#logo {
+        
+   width: 20px;
+
+}
+
+
+
+#navbar ul {
+   
+   list-style-type: none;
+   padding-top: 14px;
+   padding-bottom: 14px;
+   background-color: black;
+   
+}
+
+#navbar li {
+   display: inline;
+   color: lightgrey;
+   padding-right: 72px;
+   
+}
+
+#navbar li:hover {
+   color: white;
+   cursor: pointer;
+}
+
+@media screen and (max-width: 600px){
+ 
+ i {
+     display: block;
+     color: lightgrey;
+ }
+}
+
+@media screen and (min-width 601px){
+ 
+   i {
+       display none;
+   }
+}
+
+
+
+
+/* ================================================== START MAIN SECTION 1 =====================================================*/
+
+.main-header {
+   font-size: 3.2em;
+   margin-top: 0;
+   padding-top: 60px;
+}
+
+.sub-header {
+   font-size: 1.5em;
+   margin-top: -25px;
+}
+
+.price-header {
+   margin-top: -10px;
+}
+
+#text-white {
+   color: white;
+}
+.main-section {
+   background-color: black;
+   text-align: center;
+   padding-top: 15px;
+       
+}
+
+.main-section h1, h3, p {
+
+   color: white;
+}
+
+.main-section p {
+   color: grey;
+}
+
+.main-section a {
+   color: #41b0ee;
+   text-decoration: none;
+}
+
+.underline:hover {
+   text-decoration: underline;
+   color:  #41b0ee;
+}
+
+.no-underline:hover {
+   text-decoration: none !important;
+
+}
+
+.span-padding-right {
+   padding-right: 20px;
+
+}
+
+.main-section img {
+   width: 47%;
+   margin-bottom: -4px;
+}
+
+
+/* ================================================== END MAIN SECTION =====================================================*/
+
+/* ================================================== START MAIN SECTION TWO =====================================================*/
+
+.main-section-rest {
+   margin-top: 15px;
+   background-color: #fafafa;
+   text-align: center;
+       
+}
+
+.main-section-rest h1, h3, p {
+
+   color: black;
+}
+
+.main-section-rest p {
+   color: grey;
+}
+
+.main-section-rest a {
+   color: #41b0ee;
+   text-decoration: none;
+}
+
+.main-section-rest img {
+   width: 47%;
+   margin-bottom: -4px;
+}
+
+/* ================================================== END MAIN SECTION TWO =====================================================*/
+
+/* ================================================== START WATCH SERIES SECTION =====================================================*/
+
+#watch-series-section {
+   background-image: url(images/main3.png);
+   height: 600px;
+   background-position: center; /* Center the image */
+   background-repeat: no-repeat; /* Do not repeat the image */
+   background-size: 90%; /* Resize the background image to cover the entire container */
+   margin-top: 5px;
+}
+
+#watch-series-image {
+   padding-top: 30px;
+   padding-bottom: 40px;
+   width: 15%;
+}
+
+/* ================================================== END MAIN SECTION TWO =====================================================*/
+
+/* ================================================== START GRID SECTION =====================================================*/
+
+.container {
+   display: grid;
+   width: 100%;
+   height: 100%;
+   grid-template-columns: 1f 1f;
+   grid-template-rows: 1f 1f 1f 2f;
+   grid-gap: 10px;
+   
+   
+   grid-template-areas: 
+   "centralpark covid"
+   "arcade airpods"
+   "cards ipad";
+   
+}
+
+
+.container div {
+  height: 550px;
+
+}
+
+#central-park, #arcade, #cards {
+   margin-left: 10px;
+}
+
+#covid, #airpods, #ipad {
+   margin-right: 10px;
+}
+
+
+#central-park {
+  grid-area: centralpark;
+  background-image: url('images/centralpark.png');
+  background-position: center; 
+   background-repeat: no-repeat; 
+   background-size: cover; 
+   margin-top: 5px;
+   
+   height: auto;
+}
+
+#covid {
+
+grid-area: covid;
+background-image: url('images/covid.png');
+background-position: center top;
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+
+
+.position-link {
+position: relative;
+top: 145px;
+}
+
+#arcade {
+  grid-area: arcade;
+background-image: url('images/arcade.png');
+background-position: center top;
+background-repeat: no-repeat;
+background-size: cover;
+height: auto;
+
+}
+
+#arcade a {
+   color: #ffffff !important;
+   text-decoration: none;
+}
+
+.position-span {
+   text-align: center;
+   position: relative;
+   top: 170px;
+   height: auto;
+   
+
+}
+
+#airpods {
+   grid-area: airpods;
+   background-image: url('images/airpods.png');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: auto;
+   
+}
+
+#cards {
+   grid-area: cards;
+   background-image: url('images/card.png');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: auto;
+}
+
+#cards .position-span {
+   top: 195px;
+}
+
+#ipad {
+   grid-area: ipad;
+   background-image: url(images/ipad.png);
+   background-position: center top;
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: auto;
+}
+
+#ipad .position-span {
+   top: 145px;
+}
+
+#ipad a {
+   color: #41b0ee;
+   text-decoration: none;
+}
+
+#cards a {
+  
+   color: #41b0ee;
+   text-decoration: none;
+
+}
+
+
+#fake-footer {
+   
+   background-image: url('images/footer.png');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 500px;
+   margin-top: 20px;
+   margin-bottom: -20;
+}
+
+footer {
+   background-color: bisque;
+   width: 100%;
+   height: 40px;
+   
+   
+}
+
+footer p {
+   text-align: center;
+   padding-top: 10px;
+   margin-top: -20px;
+}
